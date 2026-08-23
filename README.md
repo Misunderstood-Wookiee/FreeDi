@@ -18,7 +18,7 @@ This branch adds Beacon RevH support and integrates a two-stage Beacon contact-c
   - Perform bed meshing.
   - Heat to print temperature.
   - Run fine Beacon Z-offset calibration.
-- Added console and LCD status messages for Beacon operations and shared final-temperature heating.
+- Added console status messages via `RESPOND` for Beacon operations and shared final-temperature heating.
 - Added clear guidance for switching probe workflows; Beacon-only commands are marked `BEACON ONLY`.
 - Added a commented `AUTO_Z_LOAD_OFFSET` alternative after bed meshing for Plus4 and Q1 Pro for using the stock feature of the machine's.
 - Added an X-series `PRINT_START` nozzle-preparation placeholder. No X-series purge or wipe motion is enabled until machine-specific wiper mod and coordinates are installed and defined, the place holder is simply where to call nozzle wiper macro once one exists.
