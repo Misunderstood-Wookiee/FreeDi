@@ -17,7 +17,6 @@ This branch adds Beacon RevH support and integrates a two-stage Beacon contact-c
   - Run fine Beacon Z-offset calibration.
 - Added console and LCD status messages for Beacon operations.
 - Added clear guidance for switching between Beacon and `auto_z_offset`.
-- Added a commented `AUTO_Z_LOAD_OFFSET` alternative after bed meshing.
 
 ## Validation
 
