@@ -1,13 +1,16 @@
+# FreeDi Beacon RevH Workflow
+
 ## Summary
 
-This branch adds Beacon RevH support and integrates a two-stage Beacon contact-calibration workflow into the Plus4 and Q1 Pro printer configurations.
+This branch adds Beacon RevH support and integrates a two-stage Beacon contact-calibration workflow into the Plus4, Q1 Pro, X-Max3, X-Plus3, and X-Smart3 printer configurations.
 
 ## Changes
 
-- Added Beacon RevH configuration for both machines.
-- Preserved stock probe and Qidi `auto_z_offset` settings as commented alternatives.
-- Added machine-specific Beacon homing center positions.
-- Updated both `PRINT_START` macros to:
+- Added Beacon RevH configuration and machine-specific homing center positions for all supported machines.
+- Preserved supported probe alternatives as commented configuration blocks:
+  - Plus4 and Q1 Pro: stock `[probe]` with `[auto_z_offset]` and `[output_pin bed_sensor]`.
+  - X series: stock `[probe]` or `[bltouch]`; early X-Max3 units commonly shipped with BLTouch.
+- Updated all `PRINT_START` macros to:
   - Purge and wipe the nozzle.
   - Heat the nozzle to 150C for coarse contact calibration.
   - Stabilize the nozzle for 30 seconds.
@@ -15,14 +18,15 @@ This branch adds Beacon RevH support and integrates a two-stage Beacon contact-c
   - Perform bed meshing.
   - Heat to print temperature.
   - Run fine Beacon Z-offset calibration.
-- Added console and LCD status messages for Beacon operations.
-- Added clear guidance for switching between Beacon and `auto_z_offset`.
-- Added a commented `AUTO_Z_LOAD_OFFSET` alternative after bed meshing.
+- Added console and LCD status messages for Beacon operations and shared final-temperature heating.
+- Added clear guidance for switching probe workflows; Beacon-only commands are marked `BEACON ONLY`.
+- Added a commented `AUTO_Z_LOAD_OFFSET` alternative after bed meshing for Plus4 and Q1 Pro.
+- Added an X-series `PRINT_START` nozzle-preparation placeholder. No X-series purge or wipe motion is enabled until machine-specific coordinates are defined.
 
 ## Validation
 
-- Confirmed Beacon is active for both machines.
-- Confirmed stock probe and `auto_z_offset` sections are disabled by default.
+- Confirmed Beacon is active for all five machine profiles.
+- Confirmed alternative probe sections are disabled by default.
 - Verified Beacon calibration command order.
 - Verified Jinja blocks and `RESPOND` message quoting.
 - Confirmed Beacon comments are aligned.
@@ -30,6 +34,8 @@ This branch adds Beacon RevH support and integrates a two-stage Beacon contact-c
 
 ## Deployment Note
 
-Replace the placeholder Beacon serial path before use:
+Before using Beacon, replace the placeholder serial path in the selected `printer.cfg`:
 
 `usb-Beacon_Beacon_RevH_YOURBEACONID-if00`
+
+For X-series machines, define a safe purge and nozzle-wipe routine before enabling contact calibration in `PRINT_START`.
