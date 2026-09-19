@@ -32,8 +32,6 @@ This branch adds Beacon RevH support and integrates a two-stage Beacon contact-c
 
 ## Deployment Note
 
-Before using Beacon, replace the placeholder serial path in the selected `printer.cfg`:
-
+- Before using Beacon, replace the placeholder serial path in the selected `printer.cfg`:
 `usb-Beacon_Beacon_RevH_YOURBEACONID-if00`
-
-For X-series machines, define a safe purge and nozzle-wipe routine for contact calibration in `PRINT_START` not doing so may result in ooze preventing a clean contact.
+- All X-series machines, define a safe purge and nozzle-wipe routine for contact calibration in `PRINT_START` not doing so may result in ooze preventing a clean contact. YOU WILL NEED TO INSTALL YOUR OWN WIPER MOD!
